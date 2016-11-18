@@ -7,7 +7,7 @@
     "build:css": "echo 'Sweet styles' && node-sass -q --indent-type tab app/styles -o dist/styles" ,
     "build:html": "echo 'That html tho' && cp index.html dist/",
     "build:js": "echo 'Cool scripts' && browserify -t babelify --presets [ es2015 ] app/scripts/*.js -o dist/scripts/bundle.js",
-    "build:assets": "echo 'Dat ass...et(s)' && cp -R app/assets/ dist/assets/",
+    "build:assets": "echo 'Those assets' && cp -R app/assets/ dist/assets/",
     "watch:css": "onchange 'app/styles/*.scss' -- npm run build:css",
     "watch:html": "onchange 'index.html' -- npm run build:html",
     "watch:js": "onchange 'app/scripts/*.js' -- npm run build:js",
