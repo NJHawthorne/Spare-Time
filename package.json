@@ -1,0 +1,38 @@
+{
+  "name": "SpareTime",
+  "version": "1.0.0",
+  "description": "Nate Hawthorne's portfolio website. Whoop whoop.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "echo 'Sweet styles' && node-sass -q --indent-type tab app/styles -o dist/styles" ,
+    "build:html": "echo 'That html tho' && cp index.html dist/",
+    "build:js": "echo 'Cool scripts' && browserify -t babelify --presets [ es2015 ] app/scripts/*.js -o dist/scripts/bundle.js",
+    "build:assets": "echo 'Dat ass...et(s)' && cp -R app/assets/ dist/assets/",
+    "watch:css": "onchange 'app/styles/*.scss' -- npm run build:css",
+    "watch:html": "onchange 'index.html' -- npm run build:html",
+    "watch:js": "onchange 'app/scripts/*.js' -- npm run build:js",
+    "watch:assets": "onchange 'app/assets/*.jpg' -- npm run build:assets",
+    "build": "run-p -s build:html build:css build:js build:assets",
+    "dev": "npm run build && npm run watch",
+    "start": "browser-sync start --server --files 'dist/styles/*.css, dist/scripts/*.js, dist/*.html'",
+    "watch": "run-p start watch:html watch:css watch:js watch:assets"
+  },
+  "keywords": [
+    "random",
+    "projects"
+  ],
+  "author": "Nate Hawthorne",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "normalize.css": "^4.2.0"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.15.0",
+    "browserify": "^13.1.0",
+    "node-sass": "^3.9.3",
+    "npm-run-all": "^3.1.0",
+    "onchange": "^3.0.2"
+  }
+}
